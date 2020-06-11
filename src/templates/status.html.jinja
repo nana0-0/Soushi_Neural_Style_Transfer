@@ -1,0 +1,31 @@
+{% extends "base.html.jinja" %}
+
+{% block headadd %}
+<meta http-equiv="refresh" content="30; URL=">
+{%endblock %}
+
+{% block content %}
+<div class="pos-f-t">
+    <div class="bg-dark p-4">
+        <h5 class="text-white h4">Neural Style Transfar</h5>
+        <span class="text-muted">for Deep Learuning</span>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        {% for i in [0,max_iteration//2 - ((max_iteration//2)%20),max_iteration] %}
+        <div class="col-12 col-md-4 col-lg-4">
+            <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;margin:1em">
+                <img src="/uploads/{{filename}}/{{i}}" style="width: 100%;height: auto;">
+                <div class="card-body text-dark">
+                    <h5 class="card-title">Iteration{{i}}</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's
+                        content.</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
