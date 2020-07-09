@@ -6,6 +6,16 @@ import json
 
 ITERATIONS = 1000
 
+class MyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        elif isinstance(obj, np.floating):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        else:
+            return super(MyEncoder, self).default(obj)
 
 def neural_style_transfer(filename):
 
@@ -25,7 +35,7 @@ def neural_style_transfer(filename):
 
 
     CONTENT_PATH = f"./uploads/{filename}"
-    STYLE_PATH = "./neural_style/examples/hosidukiya.jpg"
+    STYLE_PATH = "./neural_style/examples/gerunika.jpg"
     OUTPUT_PATH = "./output/"
 
 
@@ -74,12 +84,9 @@ def neural_style_transfer(filename):
     ):
         if image is not None:
             imsave(OUTPUT_PATH + f"{filename}.{iteration}.jpg", image)
-        if loss_vals is not None:
-            # print("loss",loss_vals)
-            #with open(OUTPUT_PATH+f"{filename}.{iteration}.json","w") as f:
-            #    f.write(json.dumps(loss_vals))
-            pass
-            
 
-    # imsave(OUTPUT_PATH + "output.jpg", image)
+            if loss_vals is not None:
+                print("loss",loss_vals)
 
+            with open(OUTPUT_PATH+f"{filename}.{iteration}.json","w") as loss_vals_file:
+                loss_vals_file.write(json.dumps(loss_vals,cls=MyEncoder))

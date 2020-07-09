@@ -10,6 +10,11 @@ from flask import send_from_directory
 from mystylize import neural_style_transfer, ITERATIONS
 from threading import Thread
 from pathlib import Path
+import json
+import mystylize 
+
+json_open = open(src\output\tokage6.jpg.900.json, 'r')
+print(mystylize.OUTPUT_PATH)
 
 UPLOAD_FOLDER = './uploads'
 # アップロードされる拡張子の制限
