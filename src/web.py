@@ -11,10 +11,7 @@ from mystylize import neural_style_transfer, ITERATIONS
 from threading import Thread
 from pathlib import Path
 import json
-import mystylize 
-
-json_open = open(src\output\tokage6.jpg.900.json, 'r')
-print(mystylize.OUTPUT_PATH)
+from mystylize import neural_style_transfer
 
 UPLOAD_FOLDER = './uploads'
 # アップロードされる拡張子の制限
@@ -24,6 +21,9 @@ app = Flask(__name__)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config["SECRET_KEY"] = "nanaaisiteru"
+
+json_open = open(f"output/tokage8.jpg.1000.json","r")
+sv_info = json.load(json_open)
 
 def allwed_file(filename):
     # .があるかどうかのチェックと、拡張子の確認
@@ -57,7 +57,6 @@ def index():
     else:
         return render_template('form.html.jinja', title='flask test') #変更
 
-
 is_traning = False
 
 def train(filename):
@@ -84,7 +83,7 @@ def status(filename):
     else:
         max_num = max(numbers)
 
-    return render_template("status.html.jinja",filename=filename, max_iteration=max_num)
+    return render_template("status.html.jinja",filename=filename, max_iteration=max_num, val_loss=sv_info)
 
 @app.route('/uploads/<filename>')
 @app.route('/uploads/<filename>/<iteration>')

@@ -19,9 +19,12 @@
                 <img src="/uploads/{{filename}}/{{i}}" style="width: 100%;height: auto;">
                 <div class="card-body text-dark">
                     <h5 class="card-title">Iteration{{i}}</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's
-                        content.</p>
+                    <p class="card-text">
+                        content_loss{{ val_loss.content }}
+                        style_loss{{ val_loss.style }}
+                        tv_loss{{ val_loss.tv }}
+                        total_loss{{ val_loss.total }}
+                    </p>
                 </div>
             </div>
         </div>
