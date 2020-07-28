@@ -37,6 +37,7 @@ def neural_style_transfer(filename):
     CONTENT_PATH = f"./uploads/{filename}"
     STYLE_PATH = "./neural_style/examples/gogh.jpg"
     OUTPUT_PATH = "./output/"
+    
 
     def imread(path):
         im = Image.open(path)

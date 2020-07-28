@@ -22,8 +22,20 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config["SECRET_KEY"] = "nanaaisiteru"
 
-json_open = open(f"output/tokage8.jpg.1000.json","r")
+#json_open = open(f"output/tokage8.jpg.1000.json","r")
+
+OUTPUT_PATH = "./output"
+
+name = OUTPUT_PATH+f"{filename}.{iteration}.json"
+
+for name in range(iteration):
+    json_open = open(f"name","r")
+
 sv_info = json.load(json_open)
+
+#for x in range(1000):
+#   with open("file{0}.json".format(x), "r") as f:
+       
 
 def allwed_file(filename):
     # .があるかどうかのチェックと、拡張子の確認
