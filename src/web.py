@@ -12,6 +12,7 @@ from threading import Thread
 from pathlib import Path
 import json
 from mystylize import neural_style_transfer
+import glob
 
 UPLOAD_FOLDER = './uploads'
 # アップロードされる拡張子の制限
@@ -22,16 +23,21 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config["SECRET_KEY"] = "nanaaisiteru"
 
-#json_open = open(f"output/tokage8.jpg.1000.json","r")
 
-OUTPUT_PATH = "./output"
+for x in glob.glob('output/*.json'):
+   print(x)
 
-name = OUTPUT_PATH+f"{filename}.{iteration}.json"
-
-for name in range(iteration):
-    json_open = open(f"name","r")
-
+json_open = open(f"output/tokage8.jpg.1000.json","r")
 sv_info = json.load(json_open)
+# l = OUTPUT_PATH+f"{filename}.{iteration}.json"
+
+#OUTPUT_PATH = "./output"
+
+#json_open = open(OUTPUT_PATH+f"{file.filename}.{iteration}.json")
+#sv_info = json.load(json_open)
+
+    
+
 
 #for x in range(1000):
 #   with open("file{0}.json".format(x), "r") as f:
