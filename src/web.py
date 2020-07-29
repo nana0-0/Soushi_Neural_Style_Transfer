@@ -100,6 +100,11 @@ def status(filename):
         max_num = 0
     else:
         max_num = max(numbers)
+              
+    #for x in glob.glob(f'output/{filename}*.json'):
+    #
+    #son_open = open(f"{x}","r")
+     #sv_info = json.load(json_open)
 
     return render_template("status.html.jinja",filename=filename, max_iteration=max_num, val_loss=sv_info)
 
