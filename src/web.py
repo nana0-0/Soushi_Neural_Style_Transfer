@@ -26,8 +26,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config["SECRET_KEY"] = "nanaaisiteru"
 
 
-json_open = open(f"output/tokage8.jpg.1000.json","r")
-sv_info = json.load(json_open)
+#json_open = open(f"output/tokage8.jpg.1000.json","r")
+#sv_info = json.load(json_open)
 
 
 # l = OUTPUT_PATH+f"{filename}.{iteration}.json"
@@ -96,10 +96,11 @@ def status(filename):
         max_num = max(numbers)
               
     jsons = []
+    max_json_num = ""
               
     for x in natsorted(glob.glob(f'output/{filename}*.json')):
         jsons.append(f'{x}')
-
+        print(jsons)
         if len(jsons) == 0:
             max_json_num = 0
         else:
@@ -107,15 +108,25 @@ def status(filename):
 
         print(max_json_num)
 
-        #with open('max_json_num') as maxjson:
-         #   val_loss_max = json.load(maxjson)
+    if jsons == []:
+        val_loss_cen = 0
+    else:
+        cen = int(len(jsons)/2)
+        cen_new = jsons[cen]
+        json_open_cen = open(f"{cen_new}","r")
+        val_loss_cen = json.load(json_open_cen)
+        print(cen)
+       
+    if max_json_num == "":
+        val_loss_max = 0
 
-    json_open = open(f"{max_json_num}","r")
-    val_loss_max = json.load(json_open)
+    else:
+        json_open = open(f"{max_json_num}","r")
+        val_loss_max = json.load(json_open)
         #return render_template("status.html.jinja",val_loss=sv_info)
 
 
-    return render_template("status.html.jinja",filename=filename, max_iteration=max_num, val_loss=val_loss_max)
+    return render_template("status.html.jinja",filename=filename, max_iteration=max_num, val_loss_max=val_loss_max, val_loss_cen=val_loss_cen)
 
 @app.route('/uploads/<filename>')
 @app.route('/uploads/<filename>/<iteration>')

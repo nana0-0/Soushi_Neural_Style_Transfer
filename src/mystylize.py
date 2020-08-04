@@ -35,7 +35,7 @@ def neural_style_transfer(filename):
 
 
     CONTENT_PATH = f"./uploads/{filename}"
-    STYLE_PATH = "./neural_style/examples/gogh.jpg"
+    STYLE_PATH = "./neural_style/examples/hosidukiya.jpg"
     OUTPUT_PATH = "./output/"
     
 
