@@ -115,7 +115,7 @@ def status(filename):
         #return render_template("status.html.jinja",val_loss=sv_info)
 
 
-    return render_template("status.html.jinja",filename=filename, max_iteration=max_num, val_loss=sv_info)
+    return render_template("status.html.jinja",filename=filename, max_iteration=max_num, val_loss=val_loss_max)
 
 @app.route('/uploads/<filename>')
 @app.route('/uploads/<filename>/<iteration>')
