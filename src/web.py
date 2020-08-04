@@ -13,6 +13,8 @@ from pathlib import Path
 import json
 from mystylize import neural_style_transfer
 import glob
+import re
+from natsort import natsorted
 
 UPLOAD_FOLDER = './uploads'
 # アップロードされる拡張子の制限
@@ -24,21 +26,14 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config["SECRET_KEY"] = "nanaaisiteru"
 
 
-for x in glob.glob('output/*.json'):
-   print(x)
-
 json_open = open(f"output/tokage8.jpg.1000.json","r")
 sv_info = json.load(json_open)
+
+
 # l = OUTPUT_PATH+f"{filename}.{iteration}.json"
-
 #OUTPUT_PATH = "./output"
-
 #json_open = open(OUTPUT_PATH+f"{file.filename}.{iteration}.json")
 #sv_info = json.load(json_open)
-
-    
-
-
 #for x in range(1000):
 #   with open("file{0}.json".format(x), "r") as f:
        
@@ -85,7 +80,6 @@ def train(filename):
         print("training start")
         neural_style_transfer(filename)
         is_traning = False
-
 @app.route('/status/<filename>')
 def status(filename):
     numbers = []
@@ -101,10 +95,24 @@ def status(filename):
     else:
         max_num = max(numbers)
               
-    #for x in glob.glob(f'output/{filename}*.json'):
-    #
-    #son_open = open(f"{x}","r")
-     #sv_info = json.load(json_open)
+    for x in natsorted(glob.glob(f'output/{filename}*.json')):
+        jsons = []
+        jsons.append(f'x')
+
+        if len(jsons) == 0:
+            max_json_num = 0
+        else:
+            max_json_num = max(jsons)
+
+        print(max_json_num)
+
+        #with open('max_json_num') as maxjson:
+         #   val_loss_max = json.load(maxjson)
+
+        #json_open = open(f"{max_json_num}","r")
+        #val_loss_max = json.load(json_open)
+        #return render_template("status.html.jinja",val_loss=sv_info)
+
 
     return render_template("status.html.jinja",filename=filename, max_iteration=max_num, val_loss=sv_info)
 
