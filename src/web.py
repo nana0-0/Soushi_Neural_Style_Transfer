@@ -110,8 +110,8 @@ def status(filename):
         #with open('max_json_num') as maxjson:
          #   val_loss_max = json.load(maxjson)
 
-        #json_open = open(f"{max_json_num}","r")
-        #val_loss_max = json.load(json_open)
+    json_open = open(f"{max_json_num}","r")
+    val_loss_max = json.load(json_open)
         #return render_template("status.html.jinja",val_loss=sv_info)
 
 
