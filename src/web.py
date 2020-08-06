@@ -107,6 +107,8 @@ def status(filename):
             max_json_num = max(jsons)
 
         print(max_json_num)
+        min_json_num = jsons[0]
+        print(jsons[0])
 
     if jsons == []:
         val_loss_cen = 0
@@ -121,12 +123,20 @@ def status(filename):
         val_loss_max = 0
 
     else:
-        json_open = open(f"{max_json_num}","r")
-        val_loss_max = json.load(json_open)
+        json_open_max = open(f"{max_json_num}","r")
+        val_loss_max = json.load(json_open_max)
         #return render_template("status.html.jinja",val_loss=sv_info)
+    
+    if min_json_num == "":
+        val_loss_min = 0
+
+    else:
+        json_open_min = open(f"{min_json_num}","r")
+        val_loss_min = json.load(json_open_min)
 
 
-    return render_template("status.html.jinja",filename=filename, max_iteration=max_num, val_loss_max=val_loss_max, val_loss_cen=val_loss_cen)
+
+    return render_template("status.html.jinja",filename=filename, max_iteration=max_num, val_loss_max=val_loss_max, val_loss_cen=val_loss_cen, val_loss_min=val_loss_min)
 
 @app.route('/uploads/<filename>')
 @app.route('/uploads/<filename>/<iteration>')

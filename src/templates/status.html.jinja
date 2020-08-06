@@ -12,8 +12,42 @@
     </div>
 </div>
 <div class="container">
+    <div class="d-flex flex-row justify-content-around">
+        <div class="col-lg-6">
+             <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;margin:1em">
+                <img src="https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"  style="width: 100%;height: auto;">
+                <div class="card-body text-dark">
+                    <h5 class="card-title">コンテント</h5>
+                </div>
+            </div>
+            <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;margin:1em">
+                <img src="https://images.pexels.com/photos/1056251/pexels-photo-1056251.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"  style="width: 100%;height: auto;">
+                <div class="card-body text-dark">
+                    <h5 class="card-title">コンテント</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
     <div class="row">
-        {% for i in [0,max_iteration//2 - ((max_iteration//2)%20),max_iteration] %}
+        {% for i in [0] %}
+        <div class="col-12 col-md-4 col-lg-4">
+            <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;margin:1em">
+                <img src="/uploads/{{filename}}/{{i}}" style="width: 100%;height: auto;">
+                <div class="card-body text-dark">
+                    <h5 class="card-title">Iteration{{i}}</h5>
+                    <p class="card-text">
+                        content_loss{{ val_loss_min.content }}
+                        style_loss{{ val_loss_min.style }}
+                        tv_loss{{ val_loss_min.tv }}
+                        total_loss{{ val_loss_min.total }}
+                    </p>
+                </div>
+            </div>
+        </div>
+         {% endfor %}
+         {% for i in [max_iteration//2 - ((max_iteration//2)%20)] %}
         <div class="col-12 col-md-4 col-lg-4">
             <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;margin:1em">
                 <img src="/uploads/{{filename}}/{{i}}" style="width: 100%;height: auto;">
@@ -24,6 +58,22 @@
                         style_loss{{ val_loss_cen.style }}
                         tv_loss{{ val_loss_cen.tv }}
                         total_loss{{ val_loss_cen.total }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% for i in [max_iteration] %}
+        <div class="col-12 col-md-4 col-lg-4">
+            <div class="card border-dark mb-3 mx-auto" style="max-width: 18rem;margin:1em">
+                <img src="/uploads/{{filename}}/{{i}}" style="width: 100%;height: auto;">
+                <div class="card-body text-dark">
+                    <h5 class="card-title">Iteration{{i}}</h5>
+                    <p class="card-text">
+                        content_loss{{ val_loss_max.content }}
+                        style_loss{{ val_loss_max.style }}
+                        tv_loss{{ val_loss_max.tv }}
+                        total_loss{{ val_loss_max.total }}
                     </p>
                 </div>
             </div>
