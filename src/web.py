@@ -97,6 +97,7 @@ def status(filename):
               
     jsons = []
     max_json_num = ""
+    min_json_num = ""
               
     for x in natsorted(glob.glob(f'output/{filename}*.json')):
         jsons.append(f'{x}')
