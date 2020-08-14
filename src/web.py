@@ -15,6 +15,7 @@ from mystylize import neural_style_transfer
 import glob
 import re
 from natsort import natsorted
+import cgi
 
 UPLOAD_FOLDER = './uploads'
 # アップロードされる拡張子の制限

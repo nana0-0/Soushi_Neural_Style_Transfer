@@ -34,34 +34,34 @@
                     <legend class="col-form-label col-sm-2 pt-0">スタイル画像</legend>
                     <div class="col-sm-10">
                         <div style="margin-bottom:1em;">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                            <div class="form-check-right">
+                                <input class="checkbox" type="checkbox"  id="hosi" name="hosi"
                                     value="option1" checked>
-                                <label class="form-check-label" for="gridRadios1">
+                                <label class="form-check-label" for="pre">
                                     星月夜
                                 </label>
                             </div>
-                            <img src="/example/hosidukiya.jpg" style="height: 100px;">
+                            <img src="/example/hosidukiya.jpg" style="height: 200px;">
                         </div>
                         <div style="margin-bottom:1em;">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
-                                    value="option1" checked>
-                                <label class="form-check-label" for="gridRadios1">
+                            <div class="form-check-right">
+                                <input class="checkbox" type="checkbox"  id="geru" name="geru"
+                                    value="option1" >
+                                <label class="form-check-label" for="deferred">
                                     ゲルニカ
                                 </label>
                             </div>
-                            <img src="/example/gerunika.jpg" style="height: 100px;">
+                            <img src="/example/gerunika.jpg" style="height: 200px;">
                         </div>
                         <div style="margin-bottom:1em;">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
-                                    value="option1" checked>
-                                <label class="form-check-label" for="gridRadios1">
+                            <div class="form-check-right">
+                                <input class="checkbox" type="checkbox"  id="tane" name="tane"
+                                    value="option1" >
+                                <label class="form-check-label" for="deferred">
                                     種をまく人
                                 </label>
                             </div>
-                            <img src="/example/tanewomakuhito.jpg" style="height: 100px;">
+                            <img src="/example/tanewomakuhito.jpg" style="height: 200px;">
                         </div>
                     </div>
                 </div>
@@ -98,9 +98,9 @@
                         var $html = [
                             '<div class="d-inline-block mr-1 mt-1"><img src="', e
                             .target.result, '" title="', escape(theFile.name),
-                            '" style="height:100px;" /><div class="small text-muted text-center">',
+                            '" style="height:200px;", /><div class="small text-muted text-center">',
                             /* escape(theFile.name),*/
-                            '</div></div>'
+                                '</div></div>'
                         ].join(''); // 画像では画像のプレビューとファイル名の表示
                     } else {
                         var $html = ['<div class="d-inline-block mr-1"><span class="small">', escape(theFile
@@ -122,5 +122,11 @@
         $('#preview').remove();
         $('.custom-file-input').val('');
     })
+
+    //スタイル画像選択
+    $(".checkbox").on("click", function(){
+        $('.checkbox').prop('checked', false);  //  全部のチェックを外す
+        $(this).prop('checked', true);  //  押したやつだけチェックつける
+    });
 </script>
 {% endblock %}
