@@ -29,13 +29,14 @@ def neural_style_transfer(filename):
     BETA1 = 0.9
     BETA2 = 0.999
     EPSILON = 1e-08
-    STYLE_SCALE = 1.0
     VGG_PATH = "./neural_style/imagenet-vgg-verydeep-19.mat"
     POOLING = "max"
 
 
     CONTENT_PATH = f"./uploads/{filename}"
     OUTPUT_PATH = "./output/"
+
+    
     STYLE_PATH = "./neural_style/examples/hokusai.jpg"
     
     

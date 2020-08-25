@@ -48,6 +48,8 @@ def allwed_file(filename):
 @app.route('/',methods=["GET","POST"])
 def index():
     if request.method == 'POST':
+        select = request.form.get("sele")
+        print("select:",select)
         print(f"POST {request.files['file'].filename}")
         # ファイルがなかった場合の処理
         if 'file' not in request.files:
@@ -70,6 +72,8 @@ def index():
             return redirect(url_for('status', filename=filename))
     else:
         return render_template('form.html.jinja', title='flask test') #変更
+
+
 
 is_traning = False
 
@@ -102,15 +106,15 @@ def status(filename):
               
     for x in natsorted(glob.glob(f'output/{filename}*.json')):
         jsons.append(f'{x}')
-        print(jsons)
+        #print(jsons)
         if len(jsons) == 0:
             max_json_num = 0
         else:
             max_json_num = max(jsons)
 
-        print(max_json_num)
+        #print(max_json_num)
         min_json_num = jsons[0]
-        print(jsons[0])
+        #print(jsons[0])
 
     if jsons == []:
         val_loss_cen = 0
@@ -119,7 +123,7 @@ def status(filename):
         cen_new = jsons[cen]
         json_open_cen = open(f"{cen_new}","r")
         val_loss_cen = json.load(json_open_cen)
-        print(cen)
+        #print(cen)
        
     if max_json_num == "":
         val_loss_max = 0
