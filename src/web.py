@@ -45,9 +45,8 @@ def allwed_file(filename):
     # return '.' in filename and filename.split('.')[-1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/',methods=["GET","POST"])
-def index(filename):
+def index():
     if request.method == 'POST':
-        Thread(target=train,args=(filename,)).start()
         select = request.form.get("sele")
         print(select)
         if select == "tane":
@@ -94,6 +93,7 @@ def train(filename):
 @app.route('/status/<filename>')
 def status(filename):
     numbers = []
+    Thread(target=train,args=(filename,)).start()
 
     for f in Path("./output").iterdir():
         name_list = f.name.rsplit(".",2)
