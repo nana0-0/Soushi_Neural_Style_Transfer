@@ -75,6 +75,8 @@ def index():
             # ファイルの保存
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
+            Thread(target=train,args=(filename,)).start()
+
             # アップロード後のページに転送
             return redirect(url_for('status', filename=filename))
     else:

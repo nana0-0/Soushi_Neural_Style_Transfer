@@ -17,7 +17,7 @@ class MyEncoder(json.JSONEncoder):
         else:
             return super(MyEncoder, self).default(obj)
 
-def neural_style_transfer(filename):
+def neural_style_transfer(filename,style_path):
 
     # default arguments
     CONTENT_WEIGHT = 5e0
@@ -33,8 +33,7 @@ def neural_style_transfer(filename):
     POOLING = "max"
     CONTENT_PATH = f"./uploads/{filename}"
     OUTPUT_PATH = "./output/"
-    STYLE_PATH = "./neural_style/examples/gerunika.jpg"
-
+    STYLE_PATH = style_path
     def imread(path):
         im = Image.open(path)
         im = im.convert("RGB")
