@@ -37,7 +37,6 @@ app.config["SECRET_KEY"] = "nanaaisiteru"
 #sv_info = json.load(json_open)
 #for x in range(1000):
 #   with open("file{0}.json".format(x), "r") as f:
-       
 
 def allwed_file(filename):
     # .があるかどうかのチェックと、拡張子の確認
@@ -46,10 +45,19 @@ def allwed_file(filename):
     # return '.' in filename and filename.split('.')[-1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/',methods=["GET","POST"])
-def index():
+def index(filename):
     if request.method == 'POST':
+        Thread(target=train,args=(filename,)).start()
         select = request.form.get("sele")
-        print("select:",select)
+        print(select)
+        if select == "tane":
+            style_path = "./neural_style/examples/tanewomakuhito.jpg"
+        if select == "geru":
+            style_path = "./neural_style/examples/gerunika.jpg"
+        if select == "hosi":
+            style_path = "./neural_style/examples/hosidukiya.jpg"
+        print(style_path)
+
         print(f"POST {request.files['file'].filename}")
         # ファイルがなかった場合の処理
         if 'file' not in request.files:
@@ -72,8 +80,6 @@ def index():
             return redirect(url_for('status', filename=filename))
     else:
         return render_template('form.html.jinja', title='flask test') #変更
-
-
 
 is_traning = False
 

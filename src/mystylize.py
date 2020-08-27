@@ -31,15 +31,9 @@ def neural_style_transfer(filename):
     EPSILON = 1e-08
     VGG_PATH = "./neural_style/imagenet-vgg-verydeep-19.mat"
     POOLING = "max"
-
-
     CONTENT_PATH = f"./uploads/{filename}"
     OUTPUT_PATH = "./output/"
-
-    
-    STYLE_PATH = "./neural_style/examples/hokusai.jpg"
-    
-    
+    STYLE_PATH = "./neural_style/examples/gerunika.jpg"
 
     def imread(path):
         im = Image.open(path)
