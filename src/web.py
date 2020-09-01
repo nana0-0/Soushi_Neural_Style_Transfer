@@ -56,6 +56,7 @@ def index():
         if select == "hosi":
             style_path = "./neural_style/examples/hosidukiya.jpg"
         print(style_path)
+       
 
         print(f"POST {request.files['file'].filename}")
         # ファイルがなかった場合の処理
@@ -87,7 +88,7 @@ is_traning = False
 def train(filename):
     global is_traning
     if not is_traning:
-        # Thread(target=neural_style_transfer,args=(filename,)).start()
+        Thread(target=neural_style_transfer,args=(filename,)).start()
         is_traning = True
         print("training start")
         neural_style_transfer(filename)
