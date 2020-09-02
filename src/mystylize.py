@@ -6,6 +6,7 @@ import json
 
 ITERATIONS = 1000
 
+
 class MyEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, np.integer):
@@ -17,7 +18,8 @@ class MyEncoder(json.JSONEncoder):
         else:
             return super(MyEncoder, self).default(obj)
 
-def neural_style_transfer(filename):
+
+def neural_style_transfer(filename,select):
 
     # default arguments
     CONTENT_WEIGHT = 5e0
@@ -34,23 +36,23 @@ def neural_style_transfer(filename):
     CONTENT_PATH = f"./uploads/{filename}"
     OUTPUT_PATH = "./output/"
 
-    #def style(select):
-    #    if select == "tane":
-    #        style_path = "./neural_style/examples/tanewomakuhito.jpg"
-    #    if select == "geru":
-    #        style_path = "./neural_style/examples/gerunika.jpg"
-    #    if select == "hosi":
-    #        style_path = "./neural_style/examples/hosidukiya.jpg"
-    #    print(style_path)
-    #    return style_path
+    def style(select):
+        if select == "tane":
+            style_path = "./neural_style/examples/tanewomakuhito.jpg"
+        if select == "geru":
+            style_path = "./neural_style/examples/gerunika.jpg"
+        if select == "hosi":
+            style_path = "./neural_style/examples/hosidukiya.jpg"
+        print(style_path)
+        return style_path
 
-    #STYLE_PATH = style_path
-    STYLE_PATH = "./neural_style/examples/hosidukiya.jpg"
+    STYLE_PATH = style(select)
+    # STYLE_PATH = "./neural_style/examples/hosidukiya.jpg"
 
     def imread(path):
         im = Image.open(path)
         im = im.convert("RGB")
-        im.thumbnail((500,500))
+        im.thumbnail((500, 500))
         # img = scipy.misc.imread(path).astype(np.float)
         # if len(img.shape) == 2:
         #     # grayscale
@@ -62,11 +64,9 @@ def neural_style_transfer(filename):
         print(img.shape)
         return img
 
-
     def imsave(path, img):
         img = np.clip(img, 0, 255).astype(np.uint8)
         Image.fromarray(img).save(path, quality=95)
-
 
     for iteration, image, loss_vals in stylize(
         network=VGG_PATH,
@@ -80,7 +80,9 @@ def neural_style_transfer(filename):
         content_weight_blend=CONTENT_WEIGHT_BLEND,
         style_weight=STYLE_WEIGHT,
         style_layer_weight_exp=STYLE_LAYER_WEIGHT_EXP,
-        style_blend_weights=[1.0 / len([imread(STYLE_PATH)]) for _ in [imread(STYLE_PATH)]],
+        style_blend_weights=[
+            1.0 / len([imread(STYLE_PATH)]) for _ in [imread(STYLE_PATH)]
+        ],
         tv_weight=TV_WEIGHT,
         learning_rate=LEARNING_RATE,
         beta1=BETA1,
@@ -94,7 +96,9 @@ def neural_style_transfer(filename):
             imsave(OUTPUT_PATH + f"{filename}.{iteration}.jpg", image)
 
             if loss_vals is not None:
-                print("loss",loss_vals)
+                print("loss", loss_vals)
 
-            with open(OUTPUT_PATH+f"{filename}.{iteration}.json","w") as loss_vals_file:
-                loss_vals_file.write(json.dumps(loss_vals,cls=MyEncoder))
+            with open(
+                OUTPUT_PATH + f"{filename}.{iteration}.json", "w"
+            ) as loss_vals_file:
+                loss_vals_file.write(json.dumps(loss_vals, cls=MyEncoder))

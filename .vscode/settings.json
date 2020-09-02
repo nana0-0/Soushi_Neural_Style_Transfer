@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Users/nana/Library/Caches/pypoetry/virtualenvs/neural-style-transfer-p_Znwu9b-py3.6/bin/python",
+    "python.pythonPath": ".venv/bin/python",
     "python.envFile": "${workspaceFolder}/.env",
     "python.autoComplete.extraPaths": [
         "src",
@@ -7,5 +7,6 @@
     ],
     "python.formatting.provider": "black",
     "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true
+    "python.linting.enabled": true,
+    "editor.formatOnSave": true
 }

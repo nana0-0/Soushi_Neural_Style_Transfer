@@ -13,8 +13,11 @@ pillow = "^7.1.2"
 matplotlib = "^3.2.1"
 flask = "^1.1.2"
 werkzeug = "^1.0.1"
+natsort = "^7.0.1"
 
 [tool.poetry.dev-dependencies]
+pylint = "^2.6.0"
+black = {version = "^20.8b1", allow-prereleases = true}
 
 [build-system]
 requires = ["poetry>=0.12"]
