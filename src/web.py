@@ -52,8 +52,8 @@ def allwed_file(filename):
 def select2path(select):
     if select == "tane":
         style_path = "/examples/tanewomakuhito.jpg"
-    if select == "hima":
-        style_path = "/examples/himawari.jpg"
+    if select == "nami":
+        style_path = "/examples/nami.jpeg"
     if select == "hosi":
         style_path = "/examples/hosidukiya.jpg"
     return style_path

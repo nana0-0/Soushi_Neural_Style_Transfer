@@ -39,8 +39,8 @@ def neural_style_transfer(filename,select):
     def style(select):
         if select == "tane":
             style_path = "./neural_style/examples/tanewomakuhito.jpg"
-        if select == "hima":
-            style_path = "./neural_style/examples/himawari.jpg"
+        if select == "nami":
+            style_path = "./neural_style/examples/nami.jpeg"
         if select == "hosi":
             style_path = "./neural_style/examples/hosidukiya.jpg"
         print(style_path)
