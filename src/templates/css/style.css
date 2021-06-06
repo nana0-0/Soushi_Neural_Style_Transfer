@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size:62.5%;
+    line-height:1.6;
+    font-family: "ヒラギノ角ゴ","メイリオ","san-serif";
+}
+
+body{
+    font-size: 1.4rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* header */
+
+header{
+    background: #212529;
+    padding: 24px;
+}
+
+h1{
+    display: block;
+    color: #fff;
+    font-size: 2.4rem;
+}
+
+.header_span{
+    display: block;
+    color: #6c757d;
+    font-size: 1.6rem;
+}
+
+/* content */
+
+.img_margin{
+    margin: 20px 150px;
+}
+
+.input-group{
+    margin: 0 auto;
+    width: 700px;
+}
+
+.form-check-right{
+    margin: 0 auto;
+    width: 700px;
+}
+
+legend{
+    display: block;
+    color: #212529;
+    font-weight: bold;
+    padding: 10px;
+    margin: 20px;
+}
+
+.content_flex{
+    margin: 80px 50px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+section{
+    margin: 0 20px;
+}
+
+h2{
+    text-align: center;
+    display: block;
+    padding: 10px;
+    font-size: 1.6rem;
+    color: #fff;
+    font-weight: bold;
+    background-color: #212529;
+    margin: 0;
+    border: 0.5px solid #212529;
+    border-radius: 3px 3px 0 0;
+}
+
+h3{
+    font-size: 1.6rem;
+    background: #212529;
+    color: #fff;
+    display: block;
+    padding: 10px;
+    text-align: center;
+    border-radius: 0 0 3px 3px;
+}
+
+/* footer */
+
+
+footer{
+    color: #6c757d;
+    text-align: center;
+    background: #212529;
+}
+
+p{
+    font-size: 1.4rem;
+}
+
+address{
+    font-size: 1.4rem;
+}

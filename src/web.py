@@ -105,6 +105,11 @@ def train(filename, select):
         is_traning = False
 
 
+@app.route("/css")
+def css():
+    return send_from_directory("templates/css", "style.css")
+
+
 @app.route("/status/<filename>/<style>")
 def status(filename, style):
     numbers = []
@@ -188,13 +193,25 @@ def uploaded_file(filename, iteration):
     if len(numbers) == 0:
         # Thread(target=train, args=(filename,)).start()
 
-        return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
+        resp = send_from_directory(app.config["UPLOAD_FOLDER"], filename)
+        resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+        resp.headers["Pragma"] = "no-cache"
+        resp.headers["Expires"] = "0"
+        return resp
 
     if iteration:
         if int(iteration) in numbers:
-            return send_from_directory("output", f"{filename}.{iteration}.jpg")
+            resp = send_from_directory("output", f"{filename}.{iteration}.jpg")
+            resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+            resp.headers["Pragma"] = "no-cache"
+            resp.headers["Expires"] = "0"
+            return resp
         else:
-            return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
+            resp = send_from_directory(app.config["UPLOAD_FOLDER"], filename)
+            resp.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+            resp.headers["Pragma"] = "no-cache"
+            resp.headers["Expires"] = "0"
+            return resp
 
     max_num = max(numbers)
 
