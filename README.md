@@ -9,14 +9,13 @@ $ cd soushi_Neural_Style_Transfer/
 $ git submodule update --init
 ```
 
-https://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat をダウンロードしてneural_styleフォルダの中に入れてください。
-srcフォルダの中にOutputフォルダを作ってから実行してください。
-
-
-pythonと仮想環境(poetry)
+pythonと仮想環境(poetry)を設定します。
 python 3.6.8をinstallして実行してください。
 ```
 $ pip install poetry
 $ poerty install
 $ poetry shell
 ```
+
+https://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat をダウンロードしてneural_styleフォルダの中に入れてください。
+srcフォルダの中にOutputフォルダを作ってから実行してください。
